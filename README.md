@@ -30,7 +30,7 @@ Features to create:
 
 ## 4. Solution concept
 
-### 1) Overall design
+### Overall design
 
 Below is a diagram of the system components with MOC incorporated.
 
@@ -40,7 +40,7 @@ The `ChRIS` UI and backend are hosted locally or within the institutional networ
 
 In production, an application like COVID-Net is packaged as a tree of “plugins”. When a plugin run is requested from `ChRIS`, CUBE sends the request to remote ancillary services, which handle pulling the image to run, scheduling compute and data transfer.
 
-### 2) Service structure
+### Service structure
 
 Note: The service structure described below is the new version that was rolled out during the semester. Our major contribution is enabling the deployment of these rewritten services on `OpenShift` and enabling running plugins with CUBE talking to these deployed instances.
 
@@ -54,7 +54,7 @@ This structure also enables crossover runs. After a plugin run completes, the re
 
 The structure presented above is version 3. During the semester, the `ChRIS` team at BCH redesigned the service structure and rewrote the ancillary services. In the old structure (version 2), file operations are handled in a separate service called pfioh. In the new structure, `pfcon` took this responsibility so pfioh is no longer in the structure. Also, all services are rewritten in flask, but none of the config files or deployment templates are updated. We worked with the `ChRIS` team to enable deploying the new service images onto `OpenShift`, and we are working to deploy them on MOC `OpenShift`.
 
-### 3) The COVID-Net workflow
+### The COVID-Net workflow
 
 `ChRIS` offers containerized computations called **<u>plugins</u>**. These are standalone programs that can run with or without `ChRIS` (using docker). Plugins may perform data transformations or analyses (computes) that can be chained together into a **<u>workflow</u>.** 
 
